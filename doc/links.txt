@@ -1,0 +1,8 @@
+https://github.com/mperham/sidekiq/wiki/Devise
+http://blog.remarkablelabs.com/2013/01/using-sidekiq-to-send-emails-asynchronously
+https://github.com/mperham/sidekiq/wiki/Testing
+http://stackoverflow.com/questions/6487618/testing-actionmailer-multipart-emails-with-rspec
+http://blog.lucascaton.com.br/index.php/2010/10/25/how-to-test-mailers-in-rails-3-with-rspec/
+http://railscasts.com/episodes/275-how-i-test
+http://thechangelog.com/earn-a-sidekiq-blackbelt/
+
