@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Url:
+  = @site_stat.url
+%p
+  %b Page bytes:
+  = @site_stat.page_bytes
+%p
+  %b Page:
+  = @site_stat.page
+
+= link_to 'Edit', edit_site_stat_path(@site_stat)
+\|
+= link_to 'Back', site_stats_path

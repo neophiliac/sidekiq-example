@@ -1,0 +1,23 @@
+%h1 Listing site_stats
+
+%table
+  %tr
+    %th Url
+    %th Page bytes
+    %th Page
+    %th
+    %th
+    %th
+
+  - @site_stats.each do |site_stat|
+    %tr
+      %td= site_stat.url
+      %td= site_stat.page_bytes
+      %td= site_stat.page
+      %td= link_to 'Show', site_stat
+      %td= link_to 'Edit', edit_site_stat_path(site_stat)
+      %td= link_to 'Destroy', site_stat, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Site stat', new_site_stat_path
