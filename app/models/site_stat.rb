@@ -5,6 +5,14 @@ class SiteStat < ActiveRecord::Base
   after_save :fetch_page, on: :create
   validates :url, presence: true
 
+  def page_snippet
+    if page.nil?
+      "Requesting page..."
+    else
+      page[0..100]
+    end
+  end
+
   def fetch_page
     begin
       if self.page.nil?

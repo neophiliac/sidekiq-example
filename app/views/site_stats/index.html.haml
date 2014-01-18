@@ -5,6 +5,7 @@
     %th Url
     %th Page bytes
     %th Page
+    %th Lookup Time
     %th
     %th
     %th
@@ -13,7 +14,8 @@
     %tr
       %td= site_stat.url
       %td= site_stat.page_bytes
-      %td= site_stat.page
+      %td= site_stat.page_snippet
+      %td= (site_stat.updated_at - site_stat.created_at).to_f
       %td= link_to 'Show', site_stat
       %td= link_to 'Edit', edit_site_stat_path(site_stat)
       %td= link_to 'Destroy', site_stat, :method => :delete, :data => { :confirm => 'Are you sure?' }
