@@ -10,7 +10,7 @@ class Notifications < ActionMailer::Base
   def too_slow
     @greeting = "um, what was I going to say? Oh yeah, Hi"
 
-    sleep 10 # pretend to execute a long query
+    sleep 1 # pretend to execute a long query
     mail to: "to@example.org"
   end
 end
