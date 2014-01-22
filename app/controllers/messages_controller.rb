@@ -28,8 +28,11 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
-        # send email to params['addr']
-        @mail = Notifications.too_slow(@message.email)
+        if params['commit'] == 'Slow'
+          @mail = Notifications.too_slow(@message.email)
+        else
+          @mail = Notifications.too_fast(@message.email)
+        end
         @message.touch
 
         format.html { redirect_to action: 'index', notice: 'Message was successfully created.' }
