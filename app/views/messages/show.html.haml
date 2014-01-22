@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Email:
+  = @message.email
+%p
+  %b Description:
+  = @message.description
+%p
+  %b Sent at:
+  = @message.sent_at
+
+= link_to 'Edit', edit_message_path(@message)
+\|
+= link_to 'Back', messages_path

@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe Notifications do
   describe "too_fast" do
-    let(:mail) { Notifications.too_fast }
+    let(:mail) { Notifications.too_fast("to@example.org") }
 
     it "renders the headers" do
       mail.subject.should eq("Too fast")
@@ -16,7 +16,7 @@ describe Notifications do
   end
 
   describe "too_slow" do
-    let(:mail) { Notifications.too_slow }
+    let(:mail) { Notifications.too_slow("to@example.org") }
 
     it "renders the headers" do
       mail.subject.should eq("Too slow")
