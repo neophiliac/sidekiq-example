@@ -72,9 +72,9 @@ describe SiteStatsController do
         assigns(:site_stat).should be_persisted
       end
 
-      it "redirects to the created site_stat" do
+      it "redirects to the index" do
         post :create, {:site_stat => valid_attributes}
-        response.should redirect_to(SiteStat.last)
+        response.should be_redirect
       end
     end
 
@@ -113,10 +113,10 @@ describe SiteStatsController do
         assigns(:site_stat).should eq(site_stat)
       end
 
-      it "redirects to the site_stat" do
+      it "redirects to the index" do
         site_stat = SiteStat.create! valid_attributes
         put :update, {:id => site_stat.to_param, :site_stat => valid_attributes}
-        response.should redirect_to(site_stat)
+        response.should be_redirect # to index
       end
     end
 

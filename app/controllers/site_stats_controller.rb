@@ -28,7 +28,7 @@ class SiteStatsController < ApplicationController
 
     respond_to do |format|
       if @site_stat.save
-        format.html { redirect_to @site_stat, notice: 'Site stat was successfully created.' }
+        format.html { redirect_to action: 'index', notice: 'Site stat was successfully created.' }
         format.json { render action: 'show', status: :created, location: @site_stat }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class SiteStatsController < ApplicationController
   def update
     respond_to do |format|
       if @site_stat.update(site_stat_params)
-        format.html { redirect_to @site_stat, notice: 'Site stat was successfully updated.' }
+        format.html { redirect_to action: 'index', notice: 'Site stat was successfully updated.' }
         format.json { render action: 'show', status: :ok, location: @site_stat }
       else
         format.html { render action: 'edit' }
