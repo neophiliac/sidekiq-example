@@ -30,6 +30,7 @@ class MessagesController < ApplicationController
       if @message.save
         # send email to params['addr']
         @mail = Notifications.too_slow(@message.email)
+        @message.touch
 
         format.html { redirect_to action: 'index', notice: 'Message was successfully created.' }
         format.json { render action: 'show', status: :created, location: @message }

@@ -28,6 +28,7 @@ class SiteStatsController < ApplicationController
 
     respond_to do |format|
       if @site_stat.save
+        @site_stat.touch  # set update timestamp
         format.html { redirect_to action: 'index', notice: 'Site stat was successfully created.' }
         format.json { render action: 'show', status: :created, location: @site_stat }
       else
@@ -42,6 +43,7 @@ class SiteStatsController < ApplicationController
   def update
     respond_to do |format|
       if @site_stat.update(site_stat_params)
+        @site_stat.touch  # set update timestamp
         format.html { redirect_to action: 'index', notice: 'Site stat was successfully updated.' }
         format.json { render action: 'show', status: :ok, location: @site_stat }
       else
