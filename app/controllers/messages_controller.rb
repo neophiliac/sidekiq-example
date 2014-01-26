@@ -29,11 +29,12 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if @message.save
         if params['commit'] == 'Slow'
-          @mail = Notifications.too_slow(@message.email)
+          SlowNotificationWorker.perform_async(@message.id)
         else
-          @mail = Notifications.too_fast(@message.email)
+          FastNotificationWorker.perform_async(@message.id)
         end
         @message.touch
+        #ResendNotificationWorker.perform_in(3.days, @message.id)
 
         format.html { redirect_to action: 'index', notice: 'Message was successfully created.' }
         format.json { render action: 'show', status: :created, location: @message }
