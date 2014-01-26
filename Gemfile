@@ -15,6 +15,9 @@ gem 'foundation-rails'
 gem 'haml-rails'
 gem 'rack-mini-profiler'
 
+gem 'sidekiq'
+gem 'sinatra', require: nil
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
