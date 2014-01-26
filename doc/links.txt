@@ -5,4 +5,4 @@ http://stackoverflow.com/questions/6487618/testing-actionmailer-multipart-emails
 http://blog.lucascaton.com.br/index.php/2010/10/25/how-to-test-mailers-in-rails-3-with-rspec/
 http://railscasts.com/episodes/275-how-i-test
 http://thechangelog.com/earn-a-sidekiq-blackbelt/
-
+https://github.com/philostler/rspec-sidekiq
