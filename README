@@ -16,11 +16,10 @@ records from the database, or monthly billing. Those can be set up as cron
 jobs, but that requires updating yet another system when the intervals change,
 or another task needs to be added.
 
-This project accepts user registration and sends a confirmation email. We would
-like to schedule a followup email, if possible. There is a daily email to the
-admin listing new users and changing the user's bikeshed limit causes a
-potentially long calculation. There is no background processing in the master
-branch, and sidekiq is used in the 'sidekiq' branch.
+This project accepts an email address and sends an email. We would
+like to schedule a followup email, if possible. Another page allows takes a URL
+and gets the page, storing the content in a text field. There is no background
+processing in the master branch, and sidekiq is used in the 'sidekiq' branch.
 
 You can see the difference between the two branches with 
 
