@@ -6,3 +6,5 @@ http://blog.lucascaton.com.br/index.php/2010/10/25/how-to-test-mailers-in-rails-
 http://railscasts.com/episodes/275-how-i-test
 http://thechangelog.com/earn-a-sidekiq-blackbelt/
 https://github.com/philostler/rspec-sidekiq
+http://www.vierundsechzig.de/blog/?p=783
+
