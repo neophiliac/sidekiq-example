@@ -1,20 +1,22 @@
 require 'spec_helper'
+require 'sidekiq/testing'
 
 describe SiteStat do
   describe "[happy path]" do
-    before(:each) do
-      stub_request(:get, SITESTATSTEST['url']).to_return(body: SITESTATSTEST['page'], :status => 200)
+    Sidekiq::Testing.fake!  # queue jobs but don't call #perform
 
-      @site_stat = SiteStat.create({:url => SITESTATSTEST['url']})
+    it "queues a job to call the API on create" do
+      s = SiteStat.create({url: SITESTATSTEST['url']})
+      expect {
+        s.run_callbacks(:commit)
+      }.to change { ApiCallWorker.jobs.count }.by(1)
     end
 
-    it "requests an address for a name" do
-      @site_stat.page_bytes.should eq(SITESTATSTEST['page'].length)
-      @site_stat.page.should eq(SITESTATSTEST['page'])
-    end
-
-    it "returns a display-sized portion of the page" do
-      @site_stat.page_snippet.length <= 100
+    it "#page_snippet returns a display-sized portion of the page" do
+      site_stat = SiteStat.create({:url => SITESTATSTEST['url']})
+      site_stat.page = SITESTATSTEST['page']
+      site_stat.page_bytes = site_stat.page.length # <- code smell!
+      site_stat.page_snippet.length <= 100
     end
   end
 
