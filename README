@@ -1,6 +1,10 @@
 Sidekiq Example
 ========================
 
+This example 'app' (it isn't really an app!) was built to go with a talk at the
+Lyon.rb meetup. The slides from that talk are on slideshare. 
+http://www.slideshare.net/KurtSussman/lyonrb-12feb2014sidekiq
+
 Web apps should do high-resource tasks in the background, for such resources as
 memory, CPU, disk I/O, and network I/O. Some user requests may result in
 queueing a background task, such as
