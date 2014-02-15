@@ -1,8 +1,10 @@
 class ApiCallWorker
   include Sidekiq::Worker
   def perform(sitestat_id)
-    if (s = SiteStat.find(sitestat_id)) && s.page.nil?
-      fetch_page(s)
+    ActiveRecord::Base.connection_pool.with_connection do
+      if (s = SiteStat.find(sitestat_id)) && s.page.nil?
+        fetch_page(s)
+      end
     end
   end
 
@@ -12,6 +14,7 @@ class ApiCallWorker
       if !sitestat.fetched?
         page = open(sitestat.url).read
         page_bytes = page.length
+        # if there is a chance that this record may be changed by another process, lock it before changing it!
         sitestat.update_attributes page: page, page_bytes: page_bytes
         sitestat.touch  # set update timestamp
       else
